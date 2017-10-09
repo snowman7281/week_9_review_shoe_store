@@ -1,0 +1,35 @@
+<h1><%= @store.name %></h1>
+
+<form class="" action="/stores/<%= @store.id %>/edit" method="post">
+  <input type="hidden" name="_method" value="patch">
+  <label for="name">Edit Store Name</label>
+  <input id="name" type="text" name="name" >
+  <button type="submit" name="button" class="btn">Update</button>
+</form>
+
+<form class="form-group" action="/stores/<%= @store.id %>/delete" method="post">
+  <input type="hidden" name="_method" value="delete" class="form-control">
+  <button type="submit" name="button" class="btn" id="delete">Delete Store</button>
+</form>
+
+<form class="" action="/shoe/add/<%= @store.id %>" method="post">
+  <label for="shoe_list">Select a shoe brand to add to store.</label>
+  <select id="shoe_list" name="shoe_id" type="text">
+    <% @shoe_list.each do |shoe| %>
+      <option value="<%=shoe.id %>"> <%= shoe.brand %></option>
+    <% end %>
+  </select>
+  <button type="submit" name="button" class="btn">Add Shoe</button>
+</form>
+
+<h3>Brands sold at <%= @store.name %>:</h3>
+<% if @shoes.any? %>
+  <% @shoes.each do |brand| %>
+      <p><a href="/shoes/<%= shoe.id %>"><%= shoe.brand %></a></p>
+  <% end %>
+<% else %>
+  <p>There are no shoe brands yet.</p>
+<% end %>
+
+
+<p><a href="/">Home</a></p>

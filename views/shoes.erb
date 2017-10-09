@@ -1,0 +1,13 @@
+<form class="" action="/shoes/<%= @shoe.id %>/edit" method="post">
+  <input type="hidden" name="_method" value="patch">
+  <label for="brand">Shoe Brand Name</label>
+  <input id="brand" type="text" name="brand" >
+  <button type="submit" name="button" class="btn btn-danger">Update</button>
+</form>
+
+<form class="form-group" action="/shoes/<%= @shoe.id %>/delete" method="post">
+  <input type="hidden" name="_method" value="delete" class="form-control">
+  <button type="submit" name="button" class="btn btn-danger" id="delete">Delete</button>
+</form>
+
+<p><a href="/">Home</a></p>
